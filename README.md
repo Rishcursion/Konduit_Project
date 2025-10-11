@@ -13,16 +13,27 @@ https://docs.google.com/document/d/1D6kzwef0R2kKsN_bEOkc8KUoZ9hrf80EBjbnJlwxW0I/
 # Project Directory Setup
 /
 ├── main.py             # Main entrypoint and CLI orchestrator using argparse.
+
 ├── config.py           # Centralized configuration for all modules.
+
 ├── requirements.txt    # Project dependencies for easy environment setup.
+
 ├── .env                # For storing secret API keys (e.g., GOOGLE_API_KEY).
+
 ├── data/               # Root directory for all persistent data.
+
 │   └── <domain_name>/  # A unique directory is created for each crawled site.
+
 │       ├── crawled_content.json
+
 │       └── vector_store/
+
 └── src/
+
     ├── crawler.py      # Contains the PoliteCrawler class.
+    
     ├── indexer.py      # Contains the Indexer class for embedding and storage.
+    
     └── qa_engine.py    # Contains the QAEngine class for RAG logic.
 
 # Getting Started
