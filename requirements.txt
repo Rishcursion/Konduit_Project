@@ -1,0 +1,44 @@
+# =================================================================
+# Project: RAG Web Crawler & Q&A System
+# Python Version: 3.12.8
+#
+# To install all dependencies, run the following command from the
+# project's root directory:
+# pip install -r requirements.txt
+# =================================================================
+
+# --- Core LangChain Framework ---
+# The main library for orchestrating the RAG pipeline
+langchain==0.2.5
+
+# --- LLM & Embedding Integrations ---
+# For community-provided integrations and base classes
+langchain_community==0.2.5
+# For Google Gemini model integration (LLM and Embeddings)
+langchain_google_genai==1.0.6
+# For local Hugging Face model integration (Embeddings)
+langchain_huggingface==0.0.3
+
+# --- Vector Store ---
+# For the ChromaDB vector store and its LangChain integration
+langchain_chroma==0.1.1
+chromadb==0.5.3
+
+# --- Web Crawling & Parsing ---
+# For making HTTP requests to fetch webpages
+requests==2.32.3
+# For parsing HTML content
+beautifulsoup4==4.12.3
+
+# --- Deep Learning Backend & Models ---
+# Required by langchain-huggingface for local embeddings
+sentence-transformers==3.0.1
+# The deep learning framework needed by sentence-transformers.
+# This version is for CPU. For GPU support, install a CUDA-specific version.
+torch==2.3.1
+
+# --- Utilities ---
+# For creating command-line progress bars
+tqdm==4.66.4
+# For loading secret keys from the .env file
+python-dotenv==1.0.1
