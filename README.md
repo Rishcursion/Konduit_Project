@@ -13,13 +13,21 @@ https://docs.google.com/document/d/1D6kzwef0R2kKsN_bEOkc8KUoZ9hrf80EBjbnJlwxW0I/
 # Project Directory Setup
 /
 ├── main.py             # Main entrypoint and CLI orchestrator using argparse.
+
 ├── config.py           # Centralized configuration for all modules.
+
 ├── requirements.txt    # Project dependencies for easy environment setup.
+
 ├── .env                # For storing secret API keys (e.g., GOOGLE_API_KEY).
+
 ├── data/               # Root directory for all persistent data.
+
 │   └── <domain_name>/  # A unique directory is created for each crawled site.
+
 │       ├── crawled_content.json
+
 │       └── vector_store/
+
 └── src/
     ├── crawler.py      # Contains the PoliteCrawler class.
     ├── indexer.py      # Contains the Indexer class for embedding and storage.
@@ -28,21 +36,26 @@ https://docs.google.com/document/d/1D6kzwef0R2kKsN_bEOkc8KUoZ9hrf80EBjbnJlwxW0I/
 # Getting Started
 1. Setup
 Clone the repository via http and navigate to project root directory. It is recommended to create a python virtual environment for reproducibility.
+
 `
 python -m venv venv
 source venv/bin/activate #if  using linux
 venv\bin\activate #if using Windows 
 `
+
 Install the required extra libraries for compatibility
+
 `
 pip install -r requirements.txt
 `
 
 2. Configuration
 create a .env file in your root project directory, and add your Google AI studio API key:
+
 `
 GOOGLE_API_KEY = <google_api_key>
 `
+
 modify other settings in config.py as per preference.
 
 # Usage
@@ -50,18 +63,24 @@ The application is a CLI with three main commands to be used sequentially for a 
 
 ## Step 1: Crawl A Website
 Crawls a specified website URL and stores the retrieved data under the specified local storage option
+
 `
 python main.py crawler_cli https://<domain_name>.<domain_extension>?/<domain sub-routes> --max_pages 30 --politeness=1000
 `
+
+
 ## Step 2: Indexing 
 The next step is to process the crawled data into a vector store,for top k-chunk retrival for enhancing response accuracy/contextual understanding
+
 `
 python main.py indexer_cli https://<domain_name>.<domain_extension>?/<domain sub-routes> --chunk_size 800 --chunk_overlap 0.125
 `
+
 Note: The same route used in Step 1 should be mentioned in the indexing, to ensure the same folder is picked up.
 
 ## Step 3: Ask your query
 The final step is to resolve your query based on the LLM's understanding and the vectore database's similarity retrival.
+
 `
 python main.py ask_cli https://<domain_name>.<domain_extension>?/<domain sub-routes> <query> --top_k 6
 `
