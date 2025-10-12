@@ -66,7 +66,7 @@ The application is a CLI with three main commands to be used sequentially for a 
 Crawls a specified website URL and stores the retrieved data under the specified local storage option
 
 ```
-python main.py crawler_cli https://<domain_name>.<domain_extension>?/<domain sub-routes> --max_pages 30 --politeness=1000
+python main.py crawler_cli https://<domain_name>.<domain_extension>?/<domain sub-routes> --max_pages 30 --politeness 1000
 ```
 
 
