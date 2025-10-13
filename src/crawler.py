@@ -58,6 +58,35 @@ class PoliteCrawler:
         except socket.gaierror:
             return False
 
+    def _clean_text(self, text: str) -> str:
+        """
+        A more sophisticated text cleaning pipeline.
+        - Normalizes Unicode and removes strange artifacts.
+        - Preserves meaningful paragraph breaks while collapsing unnecessary newlines.
+        - Cleans up whitespace for better readability.
+        """
+        # 1. Normalize Unicode and fix common artifacts
+        # Replace the incorrectly encoded pilcrow sign (¶) and right single quote (’), etc.
+        text = text.replace("\u00c2\u00b6", "")
+        text = text.replace("\u00e2\u0080\u0099", "'")
+        text = text.replace(" \n", "\n")  # Fix newlines preceded by spaces
+
+        # 2. Preserve paragraph breaks, but collapse in-line newlines.
+        # This is the key step to avoid losing paragraph structure.
+        # We replace double newlines (paragraph breaks) with a unique placeholder.
+        text = re.sub(r"\n{2,}", "__PARAGRAPH_BREAK__", text)
+
+        # Now, we can safely replace all remaining single newlines with spaces.
+        text = text.replace("\n", " ")
+
+        # Restore the paragraph breaks.
+        text = text.replace("__PARAGRAPH_BREAK__", "\n\n")
+
+        # 3. Collapse excessive whitespace into a single space.
+        text = re.sub(r"\s{2,}", " ", text)
+
+        return text.strip()
+
     def _setup_robot_parser(self):
         """Initializes the robot parser."""
         robots_url = urljoin(self.start_url, "/robots.txt")
@@ -96,6 +125,7 @@ class PoliteCrawler:
                 clean_text = (
                     soup.body.get_text(separator="\n", strip=True) if soup.body else ""
                 )
+                clean_text = self._clean_text(clean_text)
                 self.crawled_data[current_url] = clean_text
 
                 self._find_and_queue_links(soup, current_url)
