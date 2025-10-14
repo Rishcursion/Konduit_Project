@@ -9,6 +9,13 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores.chroma import Chroma
 
+logging.basicConfig(
+    filename="rag_indexer.log",
+    filemode="a",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
+
 
 class Indexer:
     """

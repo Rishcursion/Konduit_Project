@@ -1,0 +1,13 @@
+Time Taken: 12617 ms
+2025-10-14 23:12:28,309 - INFO - --- Evaluation Complete ---
+2025-10-14 23:12:28,309 - INFO - Total Queries: 10
+2025-10-14 23:12:28,309 - INFO - Average Latency: 12606.20 ms
+2025-10-14 23:12:28,309 - INFO - p50 (Median) Latency: 10659.50 ms
+2025-10-14 23:12:28,309 - INFO - p95 Latency: 23158.55 ms
+2025-10-14 23:12:28,310 - INFO - ----- Token Usage -----
+2025-10-14 23:12:28,310 - INFO - Total Tokens Used: 24586
+2025-10-14 23:12:28,310 - INFO - Mean Token Usage: 2458.6
+2025-10-14 23:12:28,311 - INFO - Maximum Token Usage: Query 1
+2025-10-14 23:12:28,311 - INFO - Minimum Token Usage: Query 4
+2025-10-14 23:12:28,311 - INFO - Command 'eval_cli' finished in 151.38 seconds.
+

@@ -9,6 +9,12 @@ from urllib.parse import urljoin, urlparse
 import requests
 from bs4 import BeautifulSoup
 
+logging.basicConfig(
+      filename="rag_crawler.log"  ,
+    filemode="a",
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 
 class PoliteCrawler:
     """
