@@ -115,11 +115,11 @@ python main.py eval_cli https://<domain_name>.<domain_extension>?/<domain sub-ro
 - Implement more comprehensive model metrics for evaluating model responses.
 # Tooling & Prompts
 ## Tooling
-- LLM: Gemini 2.5 Flash, Google AI Studio
+- LLM: Gemini 2.5 Flash, Google AI Studio, Note: Uses a free API Key, with rate limiting
 - Orchestration: LangChain
 - Vector Database: ChromaDB
 - WebCrawler: BeautifulSoup, urllib
-- Embedder: HuggingFace's "all-MiniLM-L6-v2" 
+- Embedder: HuggingFace "all-MiniLM-L6-v2" 
 ## Prompts:
 Context Answer: 
 ```
